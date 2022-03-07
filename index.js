@@ -10,6 +10,7 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/emr', (req, res) => res.send(JSON.stringify(data)))
+  .post('/emr', (req ,res)=> res.send('it works'))
   .get('/emr/:id', (req, res) => {
     const id = req.params.id;
     res.send(JSON.stringify(data[id-1]))
