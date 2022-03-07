@@ -10,9 +10,12 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/emr', (req, res) => res.send(JSON.stringify(data)))
-  .post('/emr', (req ,res)=> res.send('it works'))
+  .post('/emr', (req, res) => {
+    req.body;
+    res.json(req.body);
+  })
   .get('/emr/:id', (req, res) => {
     const id = req.params.id;
-    res.send(JSON.stringify(data[id-1]))
+    res.send(JSON.stringify(data[id - 1]))
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}` + data))
