@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const data = require('data/emr.json')
 const PORT = process.env.PORT || 5000
 
 express()
@@ -7,5 +8,5 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-  .get('/emr', (req, res) => res.send('Lists of EMRs'))
+  .get('/emr', (req, res) => res.send(data))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
