@@ -12,7 +12,7 @@ express()
   .get('/emr', (req, res) => res.send(JSON.stringify(data)))
   .post('/emr', (req, res) => {
     req.body;
-    res.json(req.body);
+    res.send(req.body);
   })
   .get('/emr/:id', (req, res) => {
     const id = req.params.id;
