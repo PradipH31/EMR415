@@ -171,6 +171,8 @@ express()
   .set('view engine', 'ejs')
   .get('/emr', (req, res) => res.send(JSON.stringify(data)))
   .use(bodyParser.urlencoded({ extended: true }))
+  .use(bodyParser.json())
+  .use(bodyParser.raw())
   .post('/emr', (req, res) => {
     console.log(req.body)
   })
