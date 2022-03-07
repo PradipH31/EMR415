@@ -175,6 +175,7 @@ express()
   .use(bodyParser.raw())
   .post('/emr', (req, res) => {
     console.log(req.body)
+    res.send(req.body.name)
   })
   .get('/emr/:id', (req, res) => {
     const id = req.params.id;
