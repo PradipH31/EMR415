@@ -170,12 +170,13 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/emr', (req, res) => res.send(JSON.stringify(data)))
-  .use(bodyParser.urlencoded({ extended: true }))
-  .use(bodyParser.json())
-  .use(bodyParser.raw())
+  // .use(bodyParser.urlencoded({ extended: true }))
+  // .use(bodyParser.json())
+  // .use(bodyParser.raw())
   .post('/emr', (req, res) => {
-    console.log(req.body)
-    res.send(req.body.name)
+    data.push(JSON.parse(req.body))
+    res.send(JSON.parse(req.body.name))
+    // res.sendStatus(200)
   })
   .get('/emr/:id', (req, res) => {
     const id = req.params.id;
