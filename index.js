@@ -170,8 +170,7 @@ express()
   .set('view engine', 'ejs')
   .get('/emr', (req, res) => res.send(JSON.stringify(data)))
   .post('/emr', (req, res) => {
-    id = req.body.id;
-    res.send(id);
+    console.log(req.body)
   })
   .get('/emr/:id', (req, res) => {
     const id = req.params.id;
