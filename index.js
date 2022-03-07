@@ -170,10 +170,10 @@ express()
   .set('view engine', 'ejs')
   .get('/emr', (req, res) => res.send(JSON.stringify(data)))
   .post('/emr', (req, res) => {
-    id = req.body.id;
-    res.send(id);
+    console.log(req.body)
   })
   .get('/emr/:id', (req, res) => {
-    console.log(req.params)
+    const id = req.params.id;
+    res.send(JSON.stringify(data[id - 1]))
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}` + data))
