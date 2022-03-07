@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const data = require('data/emr.json')
+import * as data from "data/emr.json"
 const PORT = process.env.PORT || 5000
 
 express()
