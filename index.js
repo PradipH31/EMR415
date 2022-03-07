@@ -172,7 +172,7 @@ express()
   .get('/emr', (req, res) => res.send(JSON.stringify(data)))
   // .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
-  // .use(bodyParser.raw())
+  .use(bodyParser.raw())
   .post('/emr', (req, res) => {
     data.push(JSON.parse(req.body))
     // res.send(JSON.parse(req.body.name))
