@@ -169,6 +169,7 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/emr', (req, res) => res.send(JSON.stringify(data)))
+  .use(bodyParser.urlencoded({ extended: true }))
   .post('/emr', (req, res) => {
     console.log(req.body)
   })
