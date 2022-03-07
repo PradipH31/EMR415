@@ -168,7 +168,6 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
   .get('/emr', (req, res) => res.send(JSON.stringify(data)))
   .post('/emr', (req, res) => {
     id = req.body.id;
