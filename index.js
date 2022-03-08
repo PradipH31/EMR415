@@ -177,6 +177,7 @@ express()
     data.push(JSON.parse(req.body))
     // res.send(JSON.parse(req.body.name))
     res.sendStatus(200)
+    res.send('200 OK')
   })
   .get('/emr/:id', (req, res) => {
     const id = req.params.id;
