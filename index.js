@@ -175,7 +175,7 @@ express()
   .use(bodyParser.raw())
   .post('/emr', (req, res) => {
     new_record = {
-      "id": data.length,
+      "id": data.length + 1,
       "name": req.body.name,
       "email": req.body.email,
       "gender": req.body.gender,
