@@ -183,8 +183,9 @@ express()
       "phone": req.body.phone,
       "address": req.body.address
     }
+    console.log(new_record)
     res.sendStatus(200)
-    res.send('200 OK')
+    // res.send('200 OK')
   })
   .get('/emr/:id', (req, res) => {
     const id = req.params.id;
