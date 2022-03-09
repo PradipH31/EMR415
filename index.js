@@ -174,7 +174,6 @@ express()
   .use(bodyParser.json())
   .use(bodyParser.raw())
   .post('/emr', (req, res) => {
-    data.push(req.body)
     new_record = {
       "id": data.length,
       "name": req.body.name,
@@ -183,9 +182,9 @@ express()
       "phone": req.body.phone,
       "address": req.body.address
     }
+    data.push(new_record)
     console.log(new_record)
     res.sendStatus(200)
-    // res.send('200 OK')
   })
   .get('/emr/:id', (req, res) => {
     const id = req.params.id;
