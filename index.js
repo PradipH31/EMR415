@@ -178,10 +178,10 @@ express()
     new_record = {
       "id": data.length,
       "name": req.body.name,
-      "email": data.body.email,
-      "gender": data.body.gender,
-      "phone": data.body.phone,
-      "address": data.body.address
+      "email": req.body.email,
+      "gender": req.body.gender,
+      "phone": req.body.phone,
+      "address": req.body.address
     }
     res.sendStatus(200)
     res.send('200 OK')
