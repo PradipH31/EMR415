@@ -178,7 +178,7 @@ express()
     new_record = {
       "id": data.length,
       "name": req.body.name,
-      "email": data.body,email,
+      "email": data.body.email,
       "gender": data.body.gender,
       "phone": data.body.phone,
       "address": data.body.address
