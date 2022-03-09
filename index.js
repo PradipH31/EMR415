@@ -176,7 +176,7 @@ express()
   .post('/emr', (req, res) => {
     data.push(req.body)
     new_record = {
-      "id": data.length(),
+      "id": data.length,
       "name": req.body.name,
       "email": data.body,email,
       "gender": data.body.gender,
