@@ -202,7 +202,7 @@ express()
       console.log(new_record)
       res.sendStatus(200)
     } else
-      res.sendStatus(403)
+      res.sendStatus(400)
   })
   .get('/emr/:id', (req, res) => {
     const id = req.params.id;
