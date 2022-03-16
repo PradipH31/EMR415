@@ -165,21 +165,6 @@ var data = [
 ]
 const PORT = process.env.PORT || 5000
 
-const portToFile = (req, res) => {
-  new_record = {
-    "id": data.length + 1,
-    "name": req.body.name,
-    "email": req.body.email,
-    "gender": req.body.gender,
-    "phone": req.body.phone,
-    "address": req.body.address
-  }
-
-  data.push(new_record)
-  console.log(new_record)
-  res.sendStatus(200)
-}
-
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
