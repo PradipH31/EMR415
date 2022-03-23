@@ -182,7 +182,7 @@ express()
       "phone": req.body.phone,
       "address": req.body.address
     }
-    if (!(!new_record.name && !new_record.email && !new_record.gender && !new_record.phone && !new_record.address)) {
+    if (new_record.name && new_record.email && new_record.gender && new_record.phone && new_record.address) {
       data.push(new_record)
       console.log(new_record)
       res.sendStatus(200)
