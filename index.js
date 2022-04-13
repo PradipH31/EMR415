@@ -25,9 +25,12 @@ express()
       // });
 
       const query = {};
-      const emr = await emrs.find(query);
-      console.log(emr);
-      res.send(JSON.stringify(emr))
+      const emr = await emrs.find({}).toArray(function (err, result) {
+        if (err) throw err;
+        console.log(result);
+        res.send(JSON.stringify(result))
+        db.close();
+      });
 
     } catch (err) {
       console.log(err);
