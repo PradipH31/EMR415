@@ -32,17 +32,25 @@ express()
   .use(bodyParser.json())
   .use(bodyParser.raw())
   .post('/emr', (req, res) => {
-    new_record = {
-      "id": emrs.findOne().sort({ '_id': -1 }).limit(1).id + 1,
-      "name": req.body.name,
-      "dob": req.body.dob,
-      "medications": req.body.medications
+    try {
+      await client.connect();
+      new_record = {
+        "id": emrs.findOne().sort({ '_id': -1 }).limit(1).id + 1,
+        "name": req.body.name,
+        "dob": req.body.dob,
+        "medications": req.body.medications
+      }
+      if (new_record.name && new_record.email && new_record.gender && new_record.phone && new_record.address) {
+        emrs.insertOne(new_record)
+        res.sendStatus(200)
+      } else
+        res.sendStatus(400)
+    } catch (err) {
+      console.log(err);
     }
-    if (new_record.name && new_record.email && new_record.gender && new_record.phone && new_record.address) {
-      emrs.insertOne(new_record)
-      res.sendStatus(200)
-    } else
-      res.sendStatus(400)
+    finally {
+      await client.close();
+    }
   })
   .get('/emr/:id', async (req, res) => {
     try {
