@@ -47,7 +47,7 @@ express()
   .post('/emr', async (req, res) => {
     try {
       await client.connect();
-      old_id = await emrs.findOne({$query: {}, $orderby: {$natural : -1}}).id
+      old_id = await emrs.findOne({}, { $natural: -1 }).id
       console.log(old_id)
       new_id = old_id + 1
       new_record = {
