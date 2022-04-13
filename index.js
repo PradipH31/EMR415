@@ -18,8 +18,8 @@ express()
       const database = client.db('CMPS415EMR');
       const collection = database.collection('emrs');
 
-    
-      collection.find({}).toArray(function (err, result) {
+
+      collection.findOne({ id: '0518049' }).toArray(function (err, result) {
         if (err) {
           res.send(err)
         } else {
