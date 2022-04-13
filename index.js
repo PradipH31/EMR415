@@ -35,7 +35,7 @@ express()
     try {
       await client.connect();
       new_record = {
-        "id": emrs.findOne().sort({ '_id': -1 }).limit(1).id + 1,
+        "id": emrs.find().limit(1).sort({$natural:-1}).id + 1,
         "name": req.body.name,
         "dob": req.body.dob,
         "medications": req.body.medications
