@@ -13,7 +13,7 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/emr', async function (req, res) {
+  .get('/emr', async (req, res) => {
     try {
       await client.connect();
       const query = {};
@@ -47,7 +47,7 @@ express()
   //   } else
   //     res.sendStatus(400)
   // })
-  .get('/emr/:id', (req, res) => {
+  .get('/emr/:id', async (req, res) => {
     try {
       await client.connect();
       const query = { "id": req.params.id };
