@@ -19,7 +19,7 @@ express()
       const emrs = database.collection('emr');
 
 
-      emrs.find({}).toArray(function (err, result) {
+      await emrs.find({}).toArray(function (err, result) {
         if (err) throw err;
         res.send(JSON.stringify(result));
       });
