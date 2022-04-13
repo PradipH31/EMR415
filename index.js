@@ -20,12 +20,9 @@ express()
 
 
       emrs.findOne({}, function (err, result) {
-        if (err) {
-          res.send(err)
-        } else {
-          res.send(JSON.stringify(result));
-        }
-      })
+        if (err) throw err;
+        res.send(JSON.stringify(result));
+      });
 
     } catch (err) {
       console.log(err);
