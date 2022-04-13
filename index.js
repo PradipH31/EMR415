@@ -80,4 +80,26 @@ express()
       await client.close();
     }
   })
+  .put('/emr/:id', async (req, res) => {
+    try {
+      await client.connect();
+      const query = { "id": req.params.id };
+      new_record = {
+        "id": req.params.id,
+        "name": req.body.name,
+        "dob": req.body.dob,
+        "medications": req.body.medications
+      }
+      if (new_record.name && new_record.dob && new_record.medications) {
+        await emrs.updateOne(query, new_record)
+        res.sendStatus(200)
+      } else
+        res.sendStatus(400)
+    } catch (err) {
+      console.log(err);
+    }
+    finally {
+      await client.close();
+    }
+  })
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
