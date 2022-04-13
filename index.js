@@ -58,4 +58,4 @@ express()
   //   const id = req.params.id;
   //   res.send(JSON.stringify(data[id - 1]))
   // })
-  .listen(PORT, () => console.log(`Listening on ${PORT}` + data))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`))
