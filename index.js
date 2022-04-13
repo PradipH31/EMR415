@@ -48,7 +48,7 @@ express()
     try {
       await client.connect();
       old_id = await emrs.findOne({}, { $natural: -1 })
-      console.log(old_id)
+      console.log(old_id.id)
       // new_id = old_id + 1
       // new_record = {
       //   "id": new_id,
