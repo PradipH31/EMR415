@@ -31,7 +31,7 @@ express()
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .use(bodyParser.raw())
-  .post('/emr', (req, res) => {
+  .post('/emr', async (req, res) => {
     try {
       await client.connect();
       new_record = {
