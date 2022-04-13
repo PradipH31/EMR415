@@ -28,6 +28,19 @@ express()
       await client.close();
     }
   })
+  .get('/emr/:id', async (req, res) => {
+    try {
+      await client.connect();
+      const query = { "id": req.params.id };
+      const result = await emrs.findOne(query);
+      res.send(JSON.stringify(result));
+    } catch (err) {
+      console.log(err);
+    }
+    finally {
+      await client.close();
+    }
+  })
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .use(bodyParser.raw())
@@ -52,12 +65,12 @@ express()
       await client.close();
     }
   })
-  .get('/emr/:id', async (req, res) => {
+  .delete('/emr/:id', async (req, res) => {
     try {
       await client.connect();
       const query = { "id": req.params.id };
-      const result = await emrs.findOne(query);
-      res.send(JSON.stringify(result));
+      const result = await emrs.deleteOne(query);
+      res.send(result.acknowledged);
     } catch (err) {
       console.log(err);
     }
