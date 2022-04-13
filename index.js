@@ -40,7 +40,7 @@ express()
         "dob": req.body.dob,
         "medications": req.body.medications
       }
-      if (new_record.name && new_record.email && new_record.gender && new_record.phone && new_record.address) {
+      if (new_record.name && new_record.dob && new_record.medications) {
         emrs.insertOne(new_record)
         res.sendStatus(200)
       } else
