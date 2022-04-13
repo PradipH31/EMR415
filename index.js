@@ -47,8 +47,11 @@ express()
   .post('/emr', async (req, res) => {
     try {
       await client.connect();
+      old_id = await emrs.find().limit(1).sort({ $natural: -1 }).id
+      console.log(old_id)
+      new_id = old_id + 1
       new_record = {
-        "id": await emrs.find().limit(1).sort({$natural:-1}).id + 1,
+        "id": new_id,
         "name": req.body.name,
         "dob": req.body.dob,
         "medications": req.body.medications
