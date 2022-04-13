@@ -26,7 +26,7 @@ express()
 
       const query = {};
       const cursor = await emrs.find({})
-      const result = await cursor.toArray;
+      const result = await cursor.toArray();
       res.send(JSON.stringify(result));
       console.log(result)
 
