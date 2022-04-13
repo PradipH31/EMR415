@@ -26,7 +26,6 @@ express()
           res.send(JSON.stringify(result));
         }
       })
-      res.send(JSON.stringify(emr))
 
     } catch (err) {
       console.log(err);
