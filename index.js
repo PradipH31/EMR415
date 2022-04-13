@@ -19,26 +19,21 @@ express()
       const emrs = database.collection('emr');
 
 
-      // collection.findOne({ id: '0518049' }).toArray(function (err, result) {
-      //   if (err) {
-      //     res.send(err)
-      //   } else {
-      //     res.send(JSON.stringify(result));
-      //   }
-      // })
-
-      const query = { id: '0518049' };
-      const emr = await emrs.findOne(query);
+      collection.findOne({}).toArray(function (err, result) {
+        if (err) {
+          res.send(err)
+        } else {
+          res.send(JSON.stringify(result));
+        }
+      })
       res.send(JSON.stringify(emr))
 
     } catch (err) {
       console.log(err);
     }
     finally {
-      // Ensures that the client will close when you finish/error
       await client.close();
     }
-    // res.send(JSON.stringify(data))
   })
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
