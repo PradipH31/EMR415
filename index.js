@@ -35,13 +35,13 @@ express()
     try {
       await client.connect();
       new_record = {
-        "id": emrs.find().limit(1).sort({$natural:-1}).id + 1,
+        "id": await emrs.find().limit(1).sort({$natural:-1}).id + 1,
         "name": req.body.name,
         "dob": req.body.dob,
         "medications": req.body.medications
       }
       if (new_record.name && new_record.dob && new_record.medications) {
-        emrs.insertOne(new_record)
+        await emrs.insertOne(new_record)
         res.sendStatus(200)
       } else
         res.sendStatus(400)
