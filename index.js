@@ -16,7 +16,7 @@ express()
       await client.connect();
 
       const database = client.db('415Phase2EMR');
-      const emrs = database.collection('emrs');
+      const emrs = database.collection('emr');
 
 
       // collection.findOne({ id: '0518049' }).toArray(function (err, result) {
