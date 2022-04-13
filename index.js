@@ -16,16 +16,21 @@ express()
       await client.connect();
 
       const database = client.db('CMPS415EMR');
-      const collection = database.collection('emrs');
+      const emrs = database.collection('emrs');
 
 
-      collection.findOne({ id: '0518049' }).toArray(function (err, result) {
-        if (err) {
-          res.send(err)
-        } else {
-          res.send(JSON.stringify(result));
-        }
-      })
+      // collection.findOne({ id: '0518049' }).toArray(function (err, result) {
+      //   if (err) {
+      //     res.send(err)
+      //   } else {
+      //     res.send(JSON.stringify(result));
+      //   }
+      // })
+
+      const query = { id: '0518049' };
+      const emr = await emrs.findOne(query);
+      res.send(JSON.stringify(emr))
+
     } catch (err) {
       console.log(err);
     }
