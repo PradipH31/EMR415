@@ -26,6 +26,7 @@ express()
 
       const query = {};
       const emr = await emrs.find(query);
+      console.log(emr);
       res.send(JSON.stringify(emr))
 
     } catch (err) {
