@@ -33,7 +33,7 @@ express()
   .use(bodyParser.raw())
   .post('/emr', (req, res) => {
     new_record = {
-      "id": emr.findOne().sort({ '_id': -1 }).limit(1).id + 1,
+      "id": emrs.findOne().sort({ '_id': -1 }).limit(1).id + 1,
       "name": req.body.name,
       "dob": req.body.dob,
       "medications": req.body.medications
