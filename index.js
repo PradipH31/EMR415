@@ -15,7 +15,7 @@ express()
     try {
       await client.connect();
 
-      const database = client.db('CMPS415EMR');
+      const database = client.db('415Phase2EMR');
       const emrs = database.collection('emrs');
 
 
