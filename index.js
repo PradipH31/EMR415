@@ -19,9 +19,10 @@ express()
       const emrs = database.collection('emr');
 
 
-      emrs.findOne({}, function (err, result) {
+      emrs.find({}).toArray(function (err, result) {
         if (err) throw err;
         res.send(JSON.stringify(result));
+        db.close();
       });
 
     } catch (err) {
