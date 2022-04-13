@@ -48,19 +48,18 @@ express()
     try {
       await client.connect();
       old_id = await emrs.findOne({}, { $natural: -1 })
-      console.log(old_id.id)
-      // new_id = old_id + 1
-      // new_record = {
-      //   "id": new_id,
-      //   "name": req.body.name,
-      //   "dob": req.body.dob,
-      //   "medications": req.body.medications
-      // }
-      // if (new_record.name && new_record.dob && new_record.medications) {
-      //   await emrs.insertOne(new_record)
-      //   res.sendStatus(200)
-      // } else
-      //   res.sendStatus(400)
+      new_id = old_id.id + 1
+      new_record = {
+        "id": new_id,
+        "name": req.body.name,
+        "dob": req.body.dob,
+        "medications": req.body.medications
+      }
+      if (new_record.name && new_record.dob && new_record.medications) {
+        await emrs.insertOne(new_record)
+        res.sendStatus(200)
+      } else
+        res.sendStatus(400)
     } catch (err) {
       console.log(err);
     }
