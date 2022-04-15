@@ -71,8 +71,12 @@ express()
     try {
       await client.connect();
       const query = { "id": req.params.id };
-      const result = await emrs.deleteOne(query);
-      res.send(result.acknowledged);
+      const emr = await emrs.findOne(query);
+      if (emr) {
+        const result = await emrs.deleteOne(query);
+        res.send(result.acknowledged);
+      }
+      res.send(false);
     } catch (err) {
       console.log(err);
     }
@@ -85,9 +89,9 @@ express()
       await client.connect();
       const query = { "id": req.params.id };
       new_record = {
-        "id": req.params.id,
         "name": req.body.name,
         "dob": req.body.dob,
+        "id": req.params.id,
         "medications": req.body.medications
       }
       if (new_record.name && new_record.dob && new_record.medications) {
