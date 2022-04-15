@@ -88,18 +88,16 @@ express()
     try {
       await client.connect();
       const query = { "id": req.params.id };
+      const emr = await emrs.findOne(query);
       new_record = {
         "name": req.body.name,
         "dob": req.body.dob,
         "id": req.params.id,
         "medications": req.body.medications
       }
-      if (new_record.name && new_record.dob && new_record.medications) {
-        const emr = await emrs.findOne(query);
-        if (emr) {
-          await emrs.updateOne(query, { '$set': new_record }, { upsert: false })
-          res.sendStatus(200)
-        }
+      if (new_record.name && new_record.dob && new_record.medications && emr) {
+        await emrs.updateOne(query, { '$set': new_record }, { upsert: false })
+        res.sendStatus(200)
       } else
         res.sendStatus(400)
     } catch (err) {
