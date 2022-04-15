@@ -95,7 +95,7 @@ express()
         "medications": req.body.medications
       }
       if (new_record.name && new_record.dob && new_record.medications) {
-        await emrs.updateOne(query, new_record)
+        await emrs.updateOne(query, { '$set': new_record }, { upsert: false })
         res.sendStatus(200)
       } else
         res.sendStatus(400)
