@@ -72,6 +72,7 @@ express()
       await client.connect();
       const query = { "id": req.params.id };
       const emr = await emrs.findOne(query);
+      console.log(req.params.id);
       console.log(emr);
       if (emr) {
         const result = await emrs.deleteOne(query);
