@@ -48,7 +48,7 @@ express()
     try {
       await client.connect();
       old_id = await emrs.findOne({}, { $natural: -1 })
-      new_id = num.toString(Number(old_id.id) + 1)
+      new_id = (Number(old_id.id) + 1).toString(10)
       new_record = {
         "id": new_id,
         "name": req.body.name,
@@ -72,8 +72,6 @@ express()
       await client.connect();
       const query = { "id": req.params.id };
       const emr = await emrs.findOne(query);
-      console.log(req.params.id);
-      console.log(emr);
       if (emr) {
         const result = await emrs.deleteOne(query);
         res.send(result.acknowledged);
