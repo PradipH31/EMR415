@@ -29,7 +29,6 @@ express()
       const cursor = emrs.find({})
       const result = await cursor.toArray();
       res.send(JSON.stringify(result));
-      console.log(result)
     } catch (err) {
       console.log(err);
     }
@@ -78,7 +77,7 @@ express()
 
       //check if fields are empty
       if (new_record.name && new_record.dob && new_record.medications) {
-        // await emrs.insertOne(new_record)
+        await emrs.insertOne(new_record)
         res.sendStatus(200)
 
       } else
