@@ -72,7 +72,7 @@ express()
 
       //create the new record with the updated id and information from request body
       new_record = {
-        "id": new_id,
+        // "id": new_id,
         "name": req.body.name,
         "dob": req.body.dob,
         "medications": req.body.medications
