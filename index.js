@@ -65,7 +65,7 @@ express()
       //get the last id and add 1, then convert that id to string
       const cursor = emrs.find().sort({ _id: -1 }).limit(1)
       last_record = await cursor.toArray()
-      new_id = (Number(last_record.id) + 1).toString(10)
+      new_id = (Number(last_record[0].id) + 1).toString(10)
 
       //create the new record with the updated id and information from request body
       new_record = {
