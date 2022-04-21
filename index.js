@@ -65,7 +65,7 @@ express()
 
       //get the old id and add 1, then convert that id to string
       const cursor = emrs.find().sort({ _id: -1 }).limit(1)
-      old_id = await old_r
+      old_id = await cursor.toArray()[0]
       // old_id = await emrs.find({}).sort({ _id: -1 }).limit(1)
       // new_id = (Number(old_id.id) + 1).toString(10)
       console.log(old_id)
