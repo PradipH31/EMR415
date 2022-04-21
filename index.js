@@ -66,6 +66,8 @@ express()
       //get the old id and add 1, then convert that id to string
       old_id = await emrs.find({}).sort({ _id: -1 }).limit(1)
       new_id = (Number(old_id.id) + 1).toString(10)
+      console.log(old_id)
+      console.log(new_id)
 
       //create the new record with the updated id and information from request body
       new_record = {
@@ -77,7 +79,7 @@ express()
 
       //check if fields are empty
       if (new_record.name && new_record.dob && new_record.medications) {
-        await emrs.insertOne(new_record)
+        // await emrs.insertOne(new_record)
         res.sendStatus(200)
 
       } else
