@@ -64,7 +64,7 @@ express()
       await client.connect();
 
       //get the old id and add 1, then convert that id to string
-      old_id = await emrs.find({}).limit(1).sort({ $natural: -1 })
+      old_id = await emrs.find().sort({_id:-1}).limit(1)
       // old_id = await emrs.find({}).sort({ _id: -1 }).limit(1)
       // new_id = (Number(old_id.id) + 1).toString(10)
       console.log(old_id)
