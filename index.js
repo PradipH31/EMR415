@@ -63,17 +63,14 @@ express()
     try {
       await client.connect();
 
-      //get the old id and add 1, then convert that id to string
+      //get the last id and add 1, then convert that id to string
       const cursor = emrs.find().sort({ _id: -1 }).limit(1)
-      old_id = await cursor.toArray()
-      // old_id = await emrs.find({}).sort({ _id: -1 }).limit(1)
-      // new_id = (Number(old_id.id) + 1).toString(10)
-      console.log(old_id[0])
-      // console.log(new_id)
+      last_record = await cursor.toArray()
+      new_id = (Number(last_record.id) + 1).toString(10)
 
       //create the new record with the updated id and information from request body
       new_record = {
-        // "id": new_id,
+        "id": new_id,
         "name": req.body.name,
         "dob": req.body.dob,
         "medications": req.body.medications
