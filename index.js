@@ -26,7 +26,7 @@ express()
       //empty query to get everything
       const query = {};
 
-      const cursor = await emrs.find({})
+      const cursor = emrs.find({})
       const result = await cursor.toArray();
       res.send(JSON.stringify(result));
       console.log(result)
@@ -64,8 +64,8 @@ express()
       await client.connect();
 
       //get the old id and add 1, then convert that id to string
-      old_r = await emrs.find().sort({_id:-1}).limit(1)
-      old_id = await old_r.toArray()
+      const cursor = emrs.find().sort({ _id: -1 }).limit(1)
+      old_id = await old_r
       // old_id = await emrs.find({}).sort({ _id: -1 }).limit(1)
       // new_id = (Number(old_id.id) + 1).toString(10)
       console.log(old_id)
