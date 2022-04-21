@@ -18,7 +18,7 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  
+
   //get all api
   .get('/emr', async (req, res) => {
     try {
@@ -57,14 +57,14 @@ express()
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .use(bodyParser.raw())
-  
+
   //post api
   .post('/emr', async (req, res) => {
     try {
       await client.connect();
 
       //get the old id and add 1, then convert that id to string
-      old_id = await emrs.findOne({}, { $natural: -1 })
+      old_id = await emrs.findOne({}).limit(1).sort({ $natural: -1 })
       new_id = (Number(old_id.id) + 1).toString(10)
 
       //create the new record with the updated id and information from request body
